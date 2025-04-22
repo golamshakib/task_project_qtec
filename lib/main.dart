@@ -19,7 +19,6 @@ class PlatformUtils {
       foundation.defaultTargetPlatform == TargetPlatform.android;
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
