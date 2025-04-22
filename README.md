@@ -10,6 +10,8 @@ A Flutter e-commerce application that displays products from FakeStoreAPI with s
 
 A Flutter e-commerce application that displays products from FakeStoreAPI with search, filtering, and sorting capabilities. The app implements pagination, offline caching, and follows a clean architecture pattern using GetX for state management.
 
+
+
 ## Project Video
 - app video link : https://www.loom.com/share/2782280f3dfc460d8ebce2d994699d47
 
@@ -33,7 +35,8 @@ A Flutter e-commerce application that displays products from FakeStoreAPI with s
         - Price (Low to High)
         - Price (High to Low)
         - Rating  
-    ![search](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745317703.png?raw=true)  
+    ![search](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745317703.png?raw=true)
+- **Offline Mode**
     ![sorting by filter](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745319917.png?raw=true)
 
 - **Offline Mode**
