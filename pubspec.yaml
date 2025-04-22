@@ -40,7 +40,6 @@ dependencies:
   shared_preferences: ^2.3.2
   connectivity_plus: ^4.0.2
   shimmer: ^3.0.0
-  loading_animation_widget:
   hive_flutter: ^1.1.0
   # Icons
   cupertino_icons: ^1.0.8

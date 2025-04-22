@@ -40,12 +40,12 @@ class HomeController extends GetxController {
       }
     });
   }
-
+  /// Update the search query and filter products
   void updateSearchQuery(String query) {
     searchQuery.value = query;
     filterProducts();
   }
-
+  /// Update the sort option and filter products
   void updateSortOption(String option) {
     sortOption.value = option;
     filterProducts();

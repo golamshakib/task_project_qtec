@@ -4,9 +4,7 @@ import 'package:task_project/core/utils/constants/app_sizer.dart';
 import 'package:task_project/features/home/views/screen/search_screen.dart';
 import 'package:task_project/features/home/views/widgets/product_card.dart';
 import 'package:task_project/features/home/views/widgets/shimmer_loading.dart';
-
 import '../../../../core/common/widgets/custom_text.dart';
-
 import '../../../../core/utils/constants/app_color.dart';
 import '../../../../core/utils/constants/icon_path.dart';
 import '../../controllers/home_controller.dart';
@@ -40,7 +38,6 @@ class HomeScreen extends GetView<HomeController> {
                 child: Row(
                   children: [
                     Image.asset(IconPath.search,height: 16.h,),
-
                     SizedBox(width: 8.w),
                     CustomText(
                       text: 'Search Anythings...',
