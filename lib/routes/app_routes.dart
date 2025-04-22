@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../features/home/views/home_view.dart';
+import '../features/home/views/screen/home_screen.dart';
 
 class AppRoute {
   static const homeScreen = "/homeScreen";

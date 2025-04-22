@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:task_project/core/utils/constans/app_sizer.dart';
+import 'package:task_project/core/utils/constants/app_sizer.dart';
 
 class ShimmerLoading extends StatelessWidget {
   const ShimmerLoading({super.key});

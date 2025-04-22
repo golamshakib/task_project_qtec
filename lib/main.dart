@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_project/routes/app_routes.dart';
-import 'core/utils/constans/app_sizer.dart';
 
+import 'core/utils/constants/app_sizer.dart';
 
 void main() {
   runApp(

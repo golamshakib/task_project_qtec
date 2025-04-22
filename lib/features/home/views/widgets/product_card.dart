@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:task_project/core/utils/constans/app_sizer.dart';
+
+import 'package:task_project/core/utils/constants/app_sizer.dart';
 
 import '../../../../core/common/widgets/custom_text.dart';
 import '../../../../core/models/product_models.dart';
-import '../../../../core/utils/constans/app_color.dart';
+import '../../../../core/utils/constants/app_color.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;

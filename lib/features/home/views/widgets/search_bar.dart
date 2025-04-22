@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:task_project/core/utils/constans/app_sizer.dart';
+import 'package:task_project/core/utils/constants/app_sizer.dart';
 
-import '../../../../core/utils/constans/app_color.dart';
-import '../../../../core/utils/constans/icon_path.dart';
+import '../../../../core/utils/constants/app_color.dart';
+import '../../../../core/utils/constants/icon_path.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final Function(String) onChanged;

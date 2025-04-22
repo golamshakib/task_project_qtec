@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_project/core/utils/constans/app_sizer.dart';
+import 'package:task_project/core/utils/constants/app_sizer.dart';
 
-import '../../../../core/utils/constans/app_color.dart';
-
+import '../../../../core/utils/constants/app_color.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
