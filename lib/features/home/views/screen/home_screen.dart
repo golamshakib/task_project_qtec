@@ -22,6 +22,7 @@ class HomeScreen extends GetView<HomeController> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 4.h,),
             Container(
               height: 50,
               decoration: BoxDecoration(

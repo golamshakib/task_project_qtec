@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 import 'package:task_project/routes/app_routes.dart';
 
 import 'core/binding/controller_binder.dart';
-import 'core/services/db_helper.dart';
 import 'core/utils/constants/app_sizer.dart';
 
 void main() {
+
   runApp(
     MyApp(),
   );

@@ -131,11 +131,25 @@ class HomeController extends GetxController {
   }
 
   Future<void> _storeProductsInDb(List<Product> products) async {
-    await databaseHelper.clearDatabase();
+    final db = await databaseHelper.database;
     for (var product in products) {
-      await databaseHelper.insert(product);
+      // Check if product already exists in the database
+      final existingProduct = await db.query(
+        DatabaseHelper.table,
+        where: '${DatabaseHelper.columnId} = ?',
+        whereArgs: [product.id],
+      );
+
+      if (existingProduct.isEmpty) {
+        // If the product doesn't exist, insert it
+        await databaseHelper.insert(product);
+      } else {
+        // Optionally, you can update the existing product instead of inserting
+        // await databaseHelper.update(product); // Implement update logic
+      }
     }
   }
+
 
   Future<void> _loadProductsFromDb() async {
     final products = await databaseHelper.getProducts();
