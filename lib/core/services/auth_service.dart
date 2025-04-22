@@ -9,7 +9,6 @@ class AuthService {
   // Singleton instance for SharedPreferences
   static late SharedPreferences _preferences;
 
-
   // Private variables to hold token and userId
   static String? _token;
 

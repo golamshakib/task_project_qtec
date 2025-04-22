@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import '../models/response_data.dart';
+
+
+import '../models/response_data_model.dart';
 import '../utils/logging/logger.dart';
-import 'Auth_service.dart';
+import 'auth_service.dart';
 
 class NetworkCaller {
   final int timeoutDuration = 10;
@@ -29,7 +31,7 @@ class NetworkCaller {
   Future<ResponseData> postRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
     AppLoggerHelper.info('POST Request: $endpoint');
-    AppLoggerHelper.info('Request Body: ${jsonEncode(body.toString())}');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
 
     try {
       final Response response = await post(
@@ -49,7 +51,7 @@ class NetworkCaller {
   Future<ResponseData> putRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
     AppLoggerHelper.info('PUT Request: $endpoint');
-    AppLoggerHelper.info('Request Body: ${jsonEncode(body.toString())}');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
 
     try {
       final Response response = await put(
@@ -170,7 +172,7 @@ class NetworkCaller {
         isSuccess: false,
         statusCode: 408,
         errorMessage:
-            'Request timed out. Please check your internet connection and try again.',
+        'Request timed out. Please check your internet connection and try again.',
         responseData: null,
       );
     } else if (error is http.ClientException) {
@@ -178,7 +180,7 @@ class NetworkCaller {
         isSuccess: false,
         statusCode: 500,
         errorMessage:
-            'Network error occurred. Please check your connection and try again.',
+        'Network error occurred. Please check your connection and try again.',
         responseData: null,
       );
     } else {
