@@ -19,8 +19,6 @@ class CustomSearchBar extends StatelessWidget {
           color: Colors.transparent,
           border: Border.all(width: 1,color: Color(0xffD1D5DB))
       ),
-      margin: EdgeInsets.only(top: 10.h),
-      // padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
@@ -29,9 +27,8 @@ class CustomSearchBar extends StatelessWidget {
             color: AppColors.textSecondary,
             fontSize: 14.sp,
           ),
-          prefixIcon: Image.asset(IconPath.search),
+          prefixIcon:  Image.asset(IconPath.search,height: 16.h,),
           border: InputBorder.none,
-          // contentPadding: EdgeInsets.symmetric(vertical: 10.h),
         ),
       ),
     );

@@ -40,7 +40,8 @@ dependencies:
   shared_preferences: ^2.3.2
   connectivity_plus: ^4.0.2
   shimmer: ^3.0.0
-  hive_flutter: ^1.1.0
+  sqflite: ^2.0.0+4
+  path_provider: ^2.0.8
   # Icons
   cupertino_icons: ^1.0.8
   # State Management

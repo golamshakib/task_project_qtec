@@ -15,11 +15,10 @@ class SearchScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.background,
-
-        body: Column(
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: Column(
           children: [
             Container(
               color: Colors.white,
@@ -40,12 +39,9 @@ class SearchScreen extends GetView<HomeController> {
             ),
             Expanded(
               child: Obx(() {
-                // Show loading indicator when fetching initial data
                 if (controller.inProgress.value && controller.productList.isEmpty) {
                   return const ShimmerLoading();
                 }
-
-                // Show empty state if no products are available
                 if (controller.filteredProducts.isEmpty) {
                   return const Center(
                     child: Text(
@@ -69,18 +65,16 @@ class SearchScreen extends GetView<HomeController> {
                       padding: EdgeInsets.symmetric(vertical: 16.h),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
+                        childAspectRatio: 0.73,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
                       ),
                       itemCount: controller.filteredProducts.length +
                           (controller.inProgress.value && controller.productList.isNotEmpty ? 2 : 0),
                       itemBuilder: (context, index) {
-                        // Show loading at the end for pagination
                         if (index >= controller.filteredProducts.length) {
                           return const Center(child: CircularProgressIndicator());
                         }
-
                         final product = controller.filteredProducts[index];
                         return ProductCard(product: product);
                       },

@@ -9,6 +9,5 @@ class AppRoute {
 
   static List<GetPage> routes = [
     GetPage(name: homeScreen, page:() => const HomeScreen())
-    // GetPage(name: homeScreen, page:() => const HomeScreen())
   ];
 }

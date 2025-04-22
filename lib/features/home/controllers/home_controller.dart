@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../../core/models/product_models.dart';
 import '../../../core/services/api_end_point.dart';
+import '../../../core/services/network_service.dart';
 import '../../../core/services/newtwork_caller.dart';
 import '../../../core/utils/logging/logger.dart';
-
+import '../../../core/services/db_helper.dart';
 
 class HomeController extends GetxController {
   final RxList<Product> productList = <Product>[].obs;
@@ -17,18 +17,37 @@ class HomeController extends GetxController {
   final RxString searchQuery = ''.obs;
   final RxString sortOption = 'featured'.obs;
   final ScrollController scrollController = ScrollController();
+  final NetworkService networkService = NetworkService();
+  final DatabaseHelper databaseHelper = DatabaseHelper.instance;
 
   @override
   void onInit() {
     super.onInit();
+    networkService.monitorConnectivity();
     fetchProducts();
     setupScrollListener();
+    fetchDataBasedOnConnection();
   }
 
   @override
   void onClose() {
     scrollController.dispose();
     super.onClose();
+  }
+
+  void fetchDataBasedOnConnection() async {
+    if (await networkService.isConnectedToInternet()) {
+      fetchProducts();
+    } else {
+      Get.snackbar(
+        'No Internet',
+        'Fetching data from local storage...',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.orange,
+        colorText: Colors.white,
+      );
+      _loadProductsFromDb();
+    }
   }
 
   void setupScrollListener() {
@@ -40,11 +59,13 @@ class HomeController extends GetxController {
       }
     });
   }
+
   /// Update the search query and filter products
   void updateSearchQuery(String query) {
     searchQuery.value = query;
     filterProducts();
   }
+
   /// Update the sort option and filter products
   void updateSortOption(String option) {
     sortOption.value = option;
@@ -73,7 +94,6 @@ class HomeController extends GetxController {
         filteredProducts.sort((a, b) => (b.rating?.rate ?? 0).compareTo(a.rating?.rate ?? 0));
         break;
       default:
-      // Default sorting (featured or none)
         break;
     }
   }
@@ -81,50 +101,51 @@ class HomeController extends GetxController {
   Future<void> fetchProducts() async {
     inProgress.value = true;
     try {
-      final response = await NetworkCaller().getRequest(AppUrls.product);
+      if (await networkService.isConnected()) {
+        final response = await NetworkCaller().getRequest(AppUrls.product);
 
-      if (response.isSuccess) {
-        List<Product> products;
-        // Check the type of response data
-        if (response.responseData is String) {
-          products = productFromJson(response.responseData);
-        } else if (response.responseData is List) {
-          // If the response is already a parsed List<dynamic>
-          products = (response.responseData as List)
-              .map((json) => Product.fromJson(json))
-              .toList();
-        } else {
-          throw Exception("Unexpected response format: ${response.responseData.runtimeType}");
+        if (response.isSuccess) {
+          List<Product> products;
+          if (response.responseData is String) {
+            products = productFromJson(response.responseData);
+          } else if (response.responseData is List) {
+            products = (response.responseData as List)
+                .map((json) => Product.fromJson(json))
+                .toList();
+          } else {
+            throw Exception("Unexpected response format: ${response.responseData.runtimeType}");
+          }
+
+          productList.value = products;
+          filterProducts();
+          await _storeProductsInDb(products);
         }
-
-        productList.value = products;
-        filterProducts();
       } else {
-        Get.snackbar(
-          'Error',
-          'Failed to load products: ${response.statusCode}',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-        );
+        await _loadProductsFromDb();
       }
     } catch (e) {
       AppLoggerHelper.error('Error fetching products: $e');
-      Get.snackbar(
-        'Error',
-        'An unexpected error occurred: $e',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
     } finally {
       inProgress.value = false;
     }
   }
+
+  Future<void> _storeProductsInDb(List<Product> products) async {
+    await databaseHelper.clearDatabase();
+    for (var product in products) {
+      await databaseHelper.insert(product);
+    }
+  }
+
+  Future<void> _loadProductsFromDb() async {
+    final products = await databaseHelper.getProducts();
+    productList.value = products;
+    filterProducts();
+  }
+
   /// Load more products (pagination)
   Future<void> loadMoreProducts() async {
     if (currentPage.value >= 2) {
-      // For demo purposes, we'll simulate no more data after page 2
       hasMoreData.value = false;
       return;
     }
@@ -133,13 +154,11 @@ class HomeController extends GetxController {
     currentPage.value++;
 
     try {
-      // In a real app, you would fetch the next page from API
-      // For this demo, we'll just duplicate existing products with modified IDs
-      await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
 
       final List<Product> moreProducts = productList.map((product) {
         return Product(
-          id: product.id! + 100, // Add 100 to make IDs unique
+          id: product.id! + 100,
           title: product.title,
           price: product.price,
           description: product.description,

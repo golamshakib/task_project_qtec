@@ -17,13 +17,13 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     Get.put(HomeController());
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.background,
-        body: Column(
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: Column(
           children: [
-            // SizedBox(height: 20.h),
             Container(
+              height: 40,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.h),
                   color: Colors.transparent,
@@ -55,7 +55,7 @@ class HomeScreen extends GetView<HomeController> {
                     controller.productList.isEmpty) {
                   return const ShimmerLoading();
                 }
-
+            
                 /// Show empty state if no products are available
                 if (controller.filteredProducts.isEmpty) {
                   return const Center(
@@ -65,7 +65,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                   );
                 }
-
+            
                 /// Show the product grid
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -81,9 +81,9 @@ class HomeScreen extends GetView<HomeController> {
                       gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.7,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
+                        childAspectRatio: 0.73,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
                       ),
                       itemCount:
                       controller.filteredProducts.length +
@@ -96,7 +96,7 @@ class HomeScreen extends GetView<HomeController> {
                         if (index >= controller.filteredProducts.length) {
                           return const Center(child: CircularProgressIndicator());
                         }
-
+            
                         final product = controller.filteredProducts[index];
                         return ProductCard(product: product);
                       },

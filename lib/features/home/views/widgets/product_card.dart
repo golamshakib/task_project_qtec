@@ -35,7 +35,7 @@ class ProductCard extends StatelessWidget {
           Stack(
            children: [
             Container(
-               height: 120.h,
+               height: 140.h,
                decoration: BoxDecoration(
                  color: Colors.white,
                  borderRadius: BorderRadius.circular(8),

@@ -11,14 +11,14 @@ class ShimmerLoading extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: GridView.builder(
         physics:
-        const NeverScrollableScrollPhysics(), // Disable scrolling for shimmer
+        const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.7,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
         ),
-        itemCount: 4, // Show 4 shimmer placeholders
+        itemCount: 4,
         itemBuilder: (context, index) {
           return Shimmer.fromColors(
             baseColor: Colors.grey[300]!,
@@ -31,7 +31,6 @@ class ShimmerLoading extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Image placeholder
                   Container(
                     height: 120.h,
                     width: double.infinity,
@@ -43,28 +42,24 @@ class ShimmerLoading extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Details placeholder
                   Padding(
                     padding: EdgeInsets.only(
                         left: 2.w, right: 8.w, top: 8.h, bottom: 8.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Title placeholder
                         Container(
                           height: 14.sp,
                           width: double.infinity,
                           color: Colors.grey[300],
                         ),
                         SizedBox(height: 8.h),
-                        // Price placeholder
                         Container(
                           height: 14.sp,
                           width: 60.w,
                           color: Colors.grey[300],
                         ),
                         SizedBox(height: 8.h),
-                        // Rating placeholder
                         Row(
                           children: [
                             Container(
