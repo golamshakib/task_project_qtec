@@ -23,7 +23,7 @@ class HomeScreen extends GetView<HomeController> {
         child: Column(
           children: [
             Container(
-              height: 40,
+              height: 50,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.h),
                   color: Colors.transparent,
@@ -37,7 +37,7 @@ class HomeScreen extends GetView<HomeController> {
                 },
                 child: Row(
                   children: [
-                    Image.asset(IconPath.search,height: 16.h,),
+                    Image.asset(IconPath.search,height: 20.h,),
                     SizedBox(width: 8.w),
                     CustomText(
                       text: 'Search Anythings...',
@@ -81,7 +81,7 @@ class HomeScreen extends GetView<HomeController> {
                       gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.73,
+                        childAspectRatio: 0.65,
                         crossAxisSpacing: 15,
                         mainAxisSpacing: 15,
                       ),

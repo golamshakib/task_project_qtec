@@ -65,7 +65,7 @@ class SearchScreen extends GetView<HomeController> {
                       padding: EdgeInsets.symmetric(vertical: 16.h),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.73,
+                        childAspectRatio: 0.65,
                         crossAxisSpacing: 15,
                         mainAxisSpacing: 15,
                       ),
