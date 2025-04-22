@@ -24,7 +24,7 @@ A Flutter e-commerce application that displays products from FakeStoreAPI with s
     - Fetches products from FakeStoreAPI
     - Displays products in a responsive grid layout
     - Implements pagination with "load more" on scroll  
-    ![Product list](https://github.com/user-attachments/assets/d2f914a7-c02f-4046-abb8-a3eba274f31f)
+    ![Product list](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745319946.png?raw=true)
 
 - **Search & Filters**
 
@@ -33,8 +33,13 @@ A Flutter e-commerce application that displays products from FakeStoreAPI with s
         - Price (Low to High)
         - Price (High to Low)
         - Rating  
-    ![search](https://github.com/user-attachments/assets/21eb00f5-b7ba-4daf-8514-8b931e306250)  
-    ![sorting by filter](https://github.com/user-attachments/assets/9cb0e41e-658b-4096-a2b2-dc6fdf904348)
+    ![search](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745317703.png?raw=true)  
+    ![sorting by filter](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745319917.png?raw=true)
+
+- **Offline Mode**
+
+    - Offline Mode:
+       ![search](https://github.com/golamshakib/task_project_qtec/blob/main/Screenshot_1745317639.png?raw=true)  
 
 - **State Management**
 
