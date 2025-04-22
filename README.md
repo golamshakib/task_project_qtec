@@ -1,16 +1,104 @@
 # task_project
 
-A new Flutter project.
+### E-Commerce Product Listing App
+
+A Flutter e-commerce application that displays products from FakeStoreAPI with search, filtering, and sorting capabilities. The app implements pagination, offline caching, and follows a clean architecture pattern using GetX for state management.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### E-Commerce Product Listing App
 
-A few resources to get you started if this is your first Flutter project:
+A Flutter e-commerce application that displays products from FakeStoreAPI with search, filtering, and sorting capabilities. The app implements pagination, offline caching, and follows a clean architecture pattern using GetX for state management.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Video
+- app video link : https://www.loom.com/share/2782280f3dfc460d8ebce2d994699d47
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Apk Link
+
+- apk link : https://drive.google.com/drive/folders/1COKRQxJk1AT1safFz1e2UShT5Ee9GhIc?usp=sharing
+
+## Features
+
+- **Product List**
+
+    - Fetches products from FakeStoreAPI
+    - Displays products in a responsive grid layout
+    - Implements pagination with "load more" on scroll  
+    ![Product list](https://github.com/user-attachments/assets/d2f914a7-c02f-4046-abb8-a3eba274f31f)
+
+- **Search & Filters**
+
+    - Search products by name in real-time
+    - Sort products by:
+        - Price (Low to High)
+        - Price (High to Low)
+        - Rating  
+    ![search](https://github.com/user-attachments/assets/21eb00f5-b7ba-4daf-8514-8b931e306250)  
+    ![sorting by filter](https://github.com/user-attachments/assets/9cb0e41e-658b-4096-a2b2-dc6fdf904348)
+
+- **State Management**
+
+    - Uses GetX for reactive state management
+    - Minimizes rebuilds with `Obx` and `.obs` variables
+
+- **Offline-First Approach**
+
+    - Caches API responses using `sqflite` for local storage
+    - Shows cached data when offline
+    - Displays offline notification via bottom snackbar
+
+---
+
+## Technical Implementation
+
+### Key Components
+
+- **HomeController**: Manages product state, search, filtering, and pagination.
+- **NetworkCaller**: Handles API requests with proper error handling.
+- **LocalStorageService**: Manages caching with `sqflite`
+- **Custom Widgets**: Reusable components for consistent UI.
+
+### Dependencies
+
+1. `get` - For state management.
+2. `sqflite` - For offline local storage.
+3. `http` - For network requests.
+4. `cached_network_image` - For displaying images efficiently.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Flutter SDK
+- Dart SDK
+- An IDE (Android Studio, VS Code)
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/golamshakib/task_project_qtec.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd task_project_qtec
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    flutter pub get
+    ```
+
+4. Run the app:
+
+    ```bash
+    flutter run
+    ```
+
+---
