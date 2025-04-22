@@ -1,17 +1,45 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'app.dart';
-import 'core/services/Auth_service.dart';
-import 'core/utils/logging/loggerformain.dart';
+import 'package:get/get.dart';
+import 'package:task_project/routes/app_routes.dart';
+import 'core/utils/constans/app_sizer.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await AuthService.init();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
-        (value) {
-      Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
-      runApp(const MyApp());
-    },
+
+void main() {
+  runApp(
+    MyApp(),
   );
+}
+class PlatformUtils {
+  static bool get isIOS =>
+      foundation.defaultTargetPlatform == TargetPlatform.iOS;
+  static bool get isAndroid =>
+      foundation.defaultTargetPlatform == TargetPlatform.android;
+}
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRoute.homeScreen,
+          getPages: AppRoute.routes,
+          // initialBinding: ControllerBinder(),
+          themeMode: ThemeMode.system,
+
+          defaultTransition: PlatformUtils.isIOS ? Transition.cupertino : Transition.fade,
+          locale: Get.deviceLocale,
+          builder: (context, child) => PlatformUtils.isIOS
+              ? CupertinoTheme(data: const CupertinoThemeData(), child: child!)
+              : child!,
+        );
+      },
+    );
+  }
 }
