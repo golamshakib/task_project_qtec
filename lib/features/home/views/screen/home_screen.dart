@@ -24,16 +24,15 @@ class HomeScreen extends GetView<HomeController> {
         backgroundColor: AppColors.background,
         body: Column(
           children: [
-            SizedBox(height: 20.h),
+            // SizedBox(height: 20.h),
             Container(
-
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.h),
                   color: Colors.transparent,
                   border: Border.all(width: 1,color: Color(0xffD1D5DB))
               ),
               margin: EdgeInsets.only(left: 16.w, right :16.w,top: 16.h),
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
               child: InkWell(
                 onTap: (){
                   Get.to(()=> SearchScreen());
